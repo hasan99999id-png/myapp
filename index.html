@@ -2,34 +2,105 @@
 <html lang="fa">
 <head>
   <meta charset="UTF-8">
+  <title>فروشگاه من</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>تست</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4CAF50">
 
   <style>
     body {
       font-family: sans-serif;
-      background: #f2f2f2;
+      margin: 0;
+      background: #f5f5f5;
       text-align: center;
-      padding-top: 100px;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      font-size: 22px;
+    }
+    .container {
+      padding: 20px;
+    }
+    .product {
+      background: white;
+      margin: 15px auto;
+      padding: 15px;
+      border-radius: 12px;
+      max-width: 300px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .product h3 {
+      margin: 10px 0;
+    }
+    .product p {
+      color: #555;
     }
     button {
-      font-size: 20px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 10px;
-      background: #2196F3;
+      background: #4CAF50;
       color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:active {
+      transform: scale(0.97);
+    }
+    footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
+
 <body>
 
-  <h1>سلام 👋</h1>
-  <p>این اولین تست منه</p>
+<header>
+  فروشگاه من
+</header>
 
-  <button onclick="alert('کار می‌کنه ✅')">
-    کلیک کن
-  </button>
+<div class="container">
+
+  <div class="product">
+    <h3>موچی شکلاتی</h3>
+    <p>قیمت: ۵ یورو</p>
+    <button onclick="order('موچی شکلاتی')">سفارش</button>
+  </div>
+
+  <div class="product">
+    <h3>موچی توت‌فرنگی</h3>
+    <p>قیمت: ۶ یورو</p>
+    <button onclick="order('موچی توت‌فرنگی')">سفارش</button>
+  </div>
+
+  <div class="product">
+    <h3>موچی موز شکلات</h3>
+    <p>قیمت: ۶ یورو</p>
+    <button onclick="order('موچی موز شکلات')">سفارش</button>
+  </div>
+
+</div>
+
+<footer>
+  ساخته شده با ❤️
+</footer>
+
+<script>
+  function order(name) {
+    alert('سفارش ثبت شد: ' + name);
+  }
+
+  // PWA Service Worker
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('service-worker.js');
+  }
+</script>
 
 </body>
 </html>
